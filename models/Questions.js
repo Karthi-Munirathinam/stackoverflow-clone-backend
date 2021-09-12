@@ -15,7 +15,7 @@ const questionSchema = new Schema({
     },
     userID: {
         type: String,
-        required: true
+        required: false
     },
     tags: {
         type: Array,

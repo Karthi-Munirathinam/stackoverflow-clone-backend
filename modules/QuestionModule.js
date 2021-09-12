@@ -3,12 +3,12 @@ const Questions = require('../models/Questions');
 exports.postQuestions = async (req, res, next) => {
     try {
         const questions = new Questions({
-            companyName: req.body.companyName,
-            location: req.body.location,
+            questionTitle: req.body.questionTitle,
             description: req.body.description,
-            imgUrl: req.body.imgUrl,
             tags: req.body.tags,
-            jobs: req.body.jobs
+            votes: 0,
+            views: 0,
+            answers: []
         })
         const response = await questions.save();
         res.send(response)
