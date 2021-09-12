@@ -2,6 +2,7 @@ const bcryptjs = require('bcryptjs');
 const Login = require('../models/Login');
 const dotenv = require('dotenv');
 dotenv.config();
+
 exports.loginUser = async (req, res, next) => {
 
     let user = await Login.findOne({ "email": req.body.email });
@@ -15,7 +16,8 @@ exports.loginUser = async (req, res, next) => {
 
             res.json({
                 message: true,
-                token
+                token,
+                id: user._id,
             })
         }
         else {

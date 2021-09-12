@@ -1,4 +1,7 @@
+const { MongoDBNamespace } = require('mongodb');
+const { Mongoose } = require('mongoose');
 const User = require('../models/Users');
+const mongodb = require('mongodb');
 
 exports.postUser = async (req, res, next) => {
     const bcryptjs = require('bcryptjs');
@@ -17,5 +20,10 @@ exports.postUser = async (req, res, next) => {
 
 exports.getUser = async (req, res, next) => {
     const response = await User.find();
+    res.send(response)
+}
+
+exports.getUserbyid = async (req, res, next) => {
+    const response = await User.find({ _id: mongodb.ObjectId(req.params.id) });
     res.send(response)
 }
